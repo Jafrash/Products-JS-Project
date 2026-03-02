@@ -15,24 +15,17 @@ A simple HTML project that displays product information in real-time as you fill
   - Features (multiple checkbox selection)
 - Split-screen layout showing form and live preview side-by-side
 
-## Technologies Used
 
-- HTML5
-- CSS3
-- JavaScript (Vanilla)
 
-## How to Use
-
-1. Open `products.html` in your web browser
-2. Fill out the form fields on the right side
-3. Watch the product information update automatically on the left side
 
 ## Output Screenshot
 
-![Product Form Screenshot](screenshot.png)
+<img width="1919" height="849" alt="image" src="https://github.com/user-attachments/assets/f49257c2-2a9b-4790-9241-fcce7b23c59b" />
+
 
 *Add your screenshot here by replacing `screenshot.png` with your image filename*
 
 ---
 
 **Created as a demonstration of real-time form handling with JavaScript**
+
