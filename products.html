@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Management</title>
+    <script>
+        function dataEntered(that, targetId) {
+            let target = document.getElementById(targetId);
+            target.innerHTML = that.value;
+        }
+
+        function checkBoxChanged(that, targetId) {
+            let target = document.getElementById(targetId);
+            let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            let selectedFeatures = [];
+            checkboxes.forEach((cb) => {
+                if (cb.checked) { 
+                    selectedFeatures.push(cb.nextElementSibling.innerText);
+                }
+            });
+            target.innerHTML = selectedFeatures.join(", ");
+        }
+
+        function updatePrice(that) {
+            let target = document.getElementById('priceTarget');
+            if (that.value) {
+                target.innerHTML = '$' + parseFloat(that.value).toFixed(2);
+            } else {
+                target.innerHTML = '';
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: red;
+            text-align: center;
+        }
+
+        #product {
+            width: 58%;
+            float: left;
+            border-right: 1px solid black;
+            padding-right: 20px;
+        }
+
+        #form {
+            width: 38%;
+            float: left;
+            padding-left: 20px;
+        }
+
+        h2 {
+            color: black;
+            font-size: 1.2em;
+        }
+
+        .info-section {
+            margin-bottom: 15px;
+        }
+
+        .info-section h2 {
+            display: inline;
+        }
+
+        .info-section span {
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        td {
+            padding: 8px;
+            vertical-align: top;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 60px;
+        }
+
+        label {
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Product Information</h1>
+    <div id="product">
+        <div class="info-section">
+            <h2>Product Name: <span id="nameTarget"></span></h2>
+        </div>
+        <div class="info-section">
+            <h2>Category: <span id="categoryTarget"></span></h2>
+        </div>
+        <div class="info-section">
+            <h2>Price: <span id="priceTarget"></span></h2>
+        </div>
+        <div class="info-section">
+            <h2>Stock Quantity: <span id="stockTarget"></span></h2>
+        </div>
+        <div class="info-section">
+            <h2>Description: <span id="descriptionTarget"></span></h2>
+        </div>
+        <div class="info-section">
+            <h2>Condition: <span id="conditionTarget"></span></h2>
+        </div>
+        <div class="info-section">
+            <h2>Features: <span id="featuresTarget"></span></h2>
+        </div>
+    </div>
+
+    <div id="form">
+        <table>
+            <tr>
+                    <td>Product Name</td>
+                    <td><input type="text" id="name" placeholder="Enter product name" onkeyup="dataEntered(this,'nameTarget')"></td>
+                </tr>
+                <tr>
+                    <td>Category</td>
+                    <td>
+                        <select id="category" onchange="dataEntered(this,'categoryTarget')">
+                            <option value="">Select category</option>
+                            <option value="Electronics">Electronics</option>
+                            <option value="Clothing">Clothing</option>
+                            <option value="Home & Garden">Home & Garden</option>
+                            <option value="Sports">Sports</option>
+                            <option value="Books">Books</option>
+                            <option value="Toys">Toys</option>
+                            <option value="Food & Beverages">Food & Beverages</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Price</td>
+                    <td><input type="number" id="price" placeholder="0.00" step="0.01" min="0" onkeyup="updatePrice(this)"></td>
+                </tr>
+                <tr>
+                    <td>Stock Quantity</td>
+                    <td><input type="number" id="stock" placeholder="Enter stock quantity" min="0" onkeyup="dataEntered(this,'stockTarget')"></td>
+                </tr>
+                <tr>
+                    <td>Description</td>
+                    <td><textarea id="description" placeholder="Enter product description" onkeyup="dataEntered(this,'descriptionTarget')"></textarea></td>
+                </tr>
+                <tr>
+                    <td>Condition</td>
+                    <td>
+                        <input type="radio" name="condition" value="Brand New" onchange="dataEntered(this, 'conditionTarget')">
+                        <label>Brand New</label><br>
+                        <input type="radio" name="condition" value="Like New" onchange="dataEntered(this, 'conditionTarget')">
+                        <label>Like New</label><br>
+                        <input type="radio" name="condition" value="Used - Good" onchange="dataEntered(this, 'conditionTarget')">
+                        <label>Used - Good</label><br>
+                        <input type="radio" name="condition" value="Refurbished" onchange="dataEntered(this, 'conditionTarget')">
+                        <label>Refurbished</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Features</td>
+                    <td>
+                        <input type="checkbox" id="feature1" onchange="checkBoxChanged(this,'featuresTarget')">
+                        <label>Free Shipping</label><br>
+                        <input type="checkbox" id="feature2" onchange="checkBoxChanged(this,'featuresTarget')">
+                        <label>Warranty Included</label><br>
+                        <input type="checkbox" id="feature3" onchange="checkBoxChanged(this,'featuresTarget')">
+                        <label>Eco-Friendly</label><br>
+                        <input type="checkbox" id="feature4" onchange="checkBoxChanged(this,'featuresTarget')">
+                        <label>Gift Wrapping Available</label><br>
+                        <input type="checkbox" id="feature5" onchange="checkBoxChanged(this,'featuresTarget')">
+                        <label>Express Delivery</label>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
