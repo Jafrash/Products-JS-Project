@@ -23,9 +23,5 @@ A simple HTML project that displays product information in real-time as you fill
 <img width="1919" height="849" alt="image" src="https://github.com/user-attachments/assets/f49257c2-2a9b-4790-9241-fcce7b23c59b" />
 
 
-*Add your screenshot here by replacing `screenshot.png` with your image filename*
 
----
-
-**Created as a demonstration of real-time form handling with JavaScript**
 
